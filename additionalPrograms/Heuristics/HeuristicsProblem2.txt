@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+ int main()
+ {
+int n, totalN;
+printf("Enter your n: \n");
+scanf("%d", &n);
+printf("the sum of your nxn table is %d", n*n*n);
+ return 0;
+
+ }

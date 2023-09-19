@@ -1,0 +1,99 @@
+#include<stdio.h>
+int main()
+{
+   /* 2D array declaration*/
+   int array1[4][4];
+   int array2[4][4];
+   int array3[4][4];
+   int array4[4][4];
+   /*Counter variables for the loop*/
+   int i, j,k,m,n,swaprow1,swaprow2,swapcol1,swapcol2;
+
+   for(i=0; i<4; i++)
+   {
+      for(j=0;j<4;j++)
+      {
+          k=k+1;
+          array1[i][j]=k;
+          array2[i][j]=k;
+          array3[i][j]=k;
+          array4[i][j]=k;
+      }
+   }
+    printf("Two Dimensional array elements before transformation:\n");
+   for(i=0; i<4; i++)
+   {
+      for(j=0;j<4;j++)
+      {
+         printf("%d ", array1[i][j]);
+         if(j==3)
+         {
+            printf("\n");
+         }
+      }
+   }
+   /*
+   printf("\n");
+     for(i=0; i<4; i++)
+   {
+      for(j=0;j<4;j++)
+      {
+         printf("%d ", array2[i][j]);
+         if(j==3)
+         {
+            printf("\n");
+         }
+      }
+   }
+   */
+   printf("enter the rows you want to swap\n");
+   scanf("%d",&swaprow1);
+   printf("enter the rows you want to swap\n");
+   scanf("%d",&swaprow2);
+   
+   printf("enter the cols you want to swap\n");
+   scanf("%d",&swapcol1);
+   printf("enter the cols you want to swap\n");
+   scanf("%d",&swapcol2);
+   
+
+       for(j=0;j<4;j++)
+       {
+   array3[swaprow1][j]=array4[swaprow2][j];
+   array3[swaprow2][j]=array4[swaprow1][j];
+        }
+          for(i=0;i<4;i++)
+       {
+   array3[i][swapcol1]=array4[i][swapcol2];
+   array3[i][swapcol2]=array4[i][swapcol1];
+        }
+       
+   //Displaying array elements
+   printf("Two Dimensional array elements after transformation:\n");
+   for(i=0; i<4; i++)
+   {
+      for(j=0;j<4;j++)
+      {
+         printf("%d ", array3[i][j]);
+         if(j==3)
+         {
+            printf("\n");
+         }
+      }
+   }
+ /*  
+   printf("\n");
+     for(i=0; i<4; i++)
+   {
+      for(j=0;j<4;j++)
+      {
+         printf("%d ", array4[i][j]);
+         if(j==3)
+         {
+            printf("\n");
+         }
+      }
+   }
+   */
+   return 0;
+}

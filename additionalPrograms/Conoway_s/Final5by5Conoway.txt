@@ -1,0 +1,746 @@
+#include<stdio.h>
+
+/*checks how many neighbors the middle one has it does this by seeing what is on top of next to and neighbor the middle digit which is located in cArray[1][1]*/
+int makeFuture(int cArray[5][5])
+{
+int neighbor;
+int i,j;
+int fArray[5][5];
+ for (i=0;i<5;i++)
+ {
+     for (j=0;j<5;j++)
+     {
+    /*if there are neighbors when i and j are 1 2 or 3 */     
+    if((i==1 && j==1) || (i==1 && j==2) || (i==1 && j==3) || (i==2 && j==1) || (i==2 && j==2) || (i==2 && j==3) || (i==3 && j==1) || (i==3 && j==2) || (i==3 && j==3))
+    {
+    
+    if (cArray[i-1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i-1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i-1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i+1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   
+   neighbor=0;
+    
+    }
+   
+   
+   
+   /*corner 0 0*/
+   if(i==0 && j==0)
+   {
+    
+    if (cArray[i+4][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i+4][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i+4][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i+1][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+       /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+   
+   
+      /*corner 4 4*/
+   if(i==4 && j==4)
+   {
+    
+    if (cArray[i-1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i-1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i-1][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i-4][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i-4][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i-4][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+      /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+    
+   
+      /*corner 0 4*/
+   if(i==0 && j==4)
+   {
+    
+    if (cArray[i+4][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i+4][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i+4][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i+1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+        /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+ 
+   
+      /*corner 4 0*/
+   if(i==4 && j==0)
+   {
+    
+    if (cArray[i-1][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i-1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i-1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i-4][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i-4][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i-4][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+      /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+   
+   
+   
+  /*edges not corners*/ 
+  /*i is 4 j is everything else */
+   if((i==4 && j==1) || (i==4 && j==2) || (i==4 && j==3))
+    {
+    
+    if (cArray[i-1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i-1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i-1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i-4][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i-4][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i-4][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+        /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+   
+   
+   /*i is 0 j is everything else */
+   if((i==0 && j==1) || (i==0 && j==2) || (i==0 && j==3))
+    {
+    
+    if (cArray[i+4][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i+4][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i+4][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i+1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+      /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+ 
+   
+      /*i is everything else  j is 0 */
+   if((i==1 && j==0) || (i==2 && j==0) || (i==3 && j==0))
+    {
+    
+    if (cArray[i-1][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i-1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i-1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i+1][j+4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j+1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+       /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+  
+        /*i is everything else  j is 4 */
+   if((i==1 && j==4) || (i==2 && j==4) || (i==3 && j==4))
+    {
+    
+    if (cArray[i-1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   } 
+   
+    if (cArray[i-1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+    if (cArray[i-1][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+    
+     if (cArray[i][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+     if (cArray[i][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+      if (cArray[i+1][j]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j-1]==1)
+   {
+    neighbor=neighbor+1;
+   }
+   
+       if (cArray[i+1][j-4]==1)
+   {
+    neighbor=neighbor+1;
+   }
+      /*alive*/
+   if ((cArray[i][j]==1) && ((neighbor==2) || (neighbor==3))) 
+   {
+       fArray[i][j]=1;
+   }
+   /*dies*/
+   if ((cArray[i][j]==1) && (neighbor>3)) 
+   {
+       fArray[i][j]=0;
+   }
+    /*dies*/
+     if ((cArray[i][j]==1) && (neighbor<2)) 
+   {
+       fArray[i][j]=0;
+   }
+   
+   /*stays dead*/
+    if ((cArray[i][j]==0) && ((neighbor<=2) || (neighbor>3))) 
+   {
+       fArray[i][j]=0;
+   }
+   /*born*/
+     if ((cArray[i][j]==0) && (neighbor==3)) 
+   {
+       fArray[i][j]=1;
+   }
+   neighbor=0;
+   }
+   
+  /*loop endings*/
+  }
+  
+ }
+ 
+ printf("\n future\n");  
+ for(i=0; i<5; i++)
+   {
+      for(j=0;j<5;j++)
+      {
+         printf("%d ", fArray[i][j]);
+         if(j==4)
+         {
+            printf("\n");
+         }
+      }
+   }
+
+return fArray;
+ 
+}
+
+int main()
+{
+int initialArray[5][5];
+
+int i, j;
+
+ /*make a temporary array*/
+ for(i=0; i<5; i++)
+   {
+      for(j=0;j<5;j++)
+      {
+          initialArray[i][j]=0;
+      }
+   }
+   initialArray[0][0]=1;
+   initialArray[0][1]=1;
+   initialArray[0][2]=1;
+   initialArray[0][3]=1;    
+   initialArray[0][4]=1;
+   initialArray[1][0]=1;
+   initialArray[4][4]=1;
+   initialArray[3][3]=1;
+   
+printf("This is an example of conoway's game of life \n");
+printf("The 5x5 grid is considered to be infinite because it repeats itself \n");
+printf("This is the two Dimensional inital array \n");
+   
+   for(i=0; i<5; i++)
+   {
+      for(j=0;j<5;j++)
+      {
+         printf("%d ", initialArray[i][j]);
+         if(j==4)
+         {
+            printf("\n");
+         }
+      }
+   }
+   /*calling check neighbor*/
+    
+ 
+   makeFuture(initialArray);
+
+    return 0;
+}

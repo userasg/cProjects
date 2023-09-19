@@ -1,0 +1,51 @@
+#include <stdio.h>
+ /* I have kind of proved this one if you enter a page number of 562 the score becomes 1578*/
+
+ int calcScore(int pages) 
+ {
+ int counter, score,x,y;
+ 
+ if (pages<9)
+ {
+     score=pages;
+ }
+ 
+ if (pages>9 && pages<100)
+ {
+     x=pages-9;
+     y=x*2;
+     score=y+9;
+ }
+ 
+ if (pages>99 && pages<1000)
+ {
+     x=pages-99;
+     y=x*3;
+     score=y+189;
+ }
+ 
+  if (pages>999 && pages<10000)
+ {
+     x=pages-999;
+     y=x*4;
+     score=y+2889;
+ }
+ 
+ if (pages>9999)
+ {
+     printf("just stop reading");
+ }
+
+ return score;
+ }
+
+
+ int main() 
+ {
+ int pages;
+ printf("enter pages\n");
+ scanf("%d", &pages);
+
+ printf(" score is %d\n", calcScore(pages));
+ return 0;
+ }
